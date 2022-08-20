@@ -1,4 +1,270 @@
+/* code: by John Smilga */
+/* variables */
+:root{
+  --primaryColor:#f15024;
+  --mainBlack:#292625;
+  --mainWhite:#fff;
+  --offWhite:#f7f7f7;
+  --darkGrey:#5a4747;
+  --lightGrey:#b9b3b3;
+  --mainBlue:#3a1eca;;
+--mainTransition:all 0.3s linear;
+--mainSpacing: 0.2rem;
+
+}
+/* global styles */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
 body{
   background: lightblue;
   font-family: "Fira Code", monospace;
+  color: var(--mainBlack);
+  background: var(--mainWhite);
+  line-height: 1.5;
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  display: block;
+}
+h1,h2,h3{
+  text-transform: capitalize;
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 1.5rem;
+}
+h1{
+  font-size: 3rem;
+}
+h2{
+  margin-bottom: 0;
+}
+p{
+  font-weight: 300;
+  font-size: 0.7rem;
+  line-height: 2;
+}
+.btn{
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  text-transform: capitalize;
+  border: 3px solid var(--primaryColor);
+  color: var(--primaryColor);
+  margin: 3rem;
+  transition: var(--mainTransition);
+}
+.btn:hover{
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+}
+/* 
+=====================
+main navbar
+=====================
+*/
+.main-navbar{
+  background: var(--darkGrey);
+  padding: 0 2rem;
+}
+.main-navbar li {
+  list-style: none;
+}
+.main-navbar a{
+  text-transform: capitalize;
+  display: block;
+  padding: 1rem 0;
+  color: var(--primaryColor);
+  letter-spacing: var(--mainSpacing);
+  transition: var(--mainTransition);
+}
+.main-navbar a:hover{
+  color: var(--mainBlack);
+}
+@media screen and (min-width:992px){
+.main-navbar ul{
+    max-width: 1170px;
+    margin: 0 auto;
+    background: var(--mainWhite);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .main-navbar a{
+    text-align: center;
+  }
+}  
+/*
+========================
+hero
+=========================== 
+ */
+.hero-header{
+  min-height: 100vh;
+  background: var(--primaryColor);
+  color: var(--mainWhite);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.hero-banner{
+  /* background: blue; */
+  /* text-align: center; */
+  /* padding: 1rem; */
+}
+.hero-banner p{
+  width: 80%;
+  max-width: 560px;
+  font-size: 1rem;
+}
+@media screen and (max-width: 600px) {
+  .hero-banner{
+    padding: 0 3rem;
+  }
+}
+@media screen and (min-width:768px) {
+  .hero-header{
+    background:linear-gradient(rgba(235, 75, 45, 0.75), rgba(0, 050, 0, 0.75)), url('./image07.jpg') center/cover fixed no-repeat;
+  }
+}
+/* 
+================
+cards
+================
+*/
+.title{
+  text-align: center;
+}
+.cards{
+  padding: 4rem 0;
+}
+.cards-center{
+  width: 80vw;
+  max-width: 1170px;
+  margin: 2rem auto;
+}
+.card {
+  border: 1px solid var(--darkGrey); 
+  margin-bottom: 3rem;
+}
+.card-info{
+  padding: 1rem;
+}
+.card-footer{
+  background: var(--lightGrey);
+  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+.card-footer span{
+  color: var(--primaryColor);
+}
+/* ===================================== */
+/* @media screen and (min-width:768px){
+  .cards-center{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+    32px = 2rem or 16px = 1rem
+  }
+  
+}
+@media screen and (min-width:1170px){
+  .cards-center{
+    grid-template-columns: repeat(3, 1fr);
+  } 
+}  */
+/*this is for paragraphe individual each card  */
+.card{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
+
+/* here is the the other way of like media screen */
+/* (1170 -64)/3(umber of cards = 368 */
+.cards-center{
+  display: grid;
+  grid-column-gap: 2rem;
+  /* grid-template-columns: repeat(auto-fit, minmax(368px, 1fr)); */
+    /* grid-template-columns: repeat(auto-fill, minmax(368px, 1fr)); */
+    /* (1170 -94)/4card =  */
+      grid-template-columns: repeat(auto-fill, minmax(268.5px, 1fr));
+}
+/*
+==========================
+tiles
+========================== 
+*/
+.tiles{
+  padding: 4rem 0;
+}
+.tiles-center{
+  width: 90vw;
+  max-width: 1170px;
+  margin: 2rem auto;
+  display: grid;
+  grid-row-gap: 2rem;
+}
+@media screen and (min-width:768px) {
+  .tiles-center{
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
+  }
+  
+}
+@media screen and (min-width:992px) {
+  .tiles-center{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+}
+@media screen and (min-width:1170px) {
+  .tiles-center{
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 200px);
+    grid-template-areas: 
+    "a a a b"
+    "a a a c"
+    "d d d d"
+    "e f f f"
+    "e g h i";
+  }
+  .tiles img{
+    height: 100%;
+  }
+  .tile-1{
+    grid-area: a;
+  }
+  .tile-2{
+    grid-area: b;
+  }
+  .tile-3{
+    grid-area: c;
+  }
+  .tile-4{
+    grid-area: d;
+  }
+  .tile-5{
+    grid-area: e;
+  }
+  .tile-6{
+    grid-area: f;
+  }
+  .tile-7{
+    grid-area: g;
+  }
+  .tile-8{
+    grid-area: h;
+  }
+  .tile-9{
+    grid-area: i;
+  }
+  
 }
